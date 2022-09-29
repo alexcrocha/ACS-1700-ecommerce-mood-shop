@@ -1,6 +1,9 @@
 import data from "./data.js";
 
 const itemsContainer = document.querySelector("#items");
+const cartQuantity = document.getElementById("cart-quantity");
+const itemList = document.getElementById("item-list");
+const cartTotal = document.getElementById("cart-total");
 
 for (let index = 0; index < data.length; index++) {
   const newDiv = document.createElement("div");
@@ -45,8 +48,15 @@ function addItem(name, price, quantity = 1) {
 }
 
 function showItems() {
-  console.log(`You have ${getQuantity()} items in your cart`);
-  console.log(`Total in cart: $${getTotal()}`);
+  let itemString = "";
+  cartQuantity.innerHTML = `You have ${getQuantity()} items in your cart`;
+  for (let index = 0; index < cart.length; index++) {
+    const { name, price, quantity } = cart[index];
+    const total = cart[index].price * cart[index].quantity;
+    itemString += `<li>${name} $${price} x ${quantity} = ${total}</li>`;
+  }
+  itemList.innerHTML = itemString;
+  cartTotal.innerHTML = `Total in cart: $${getTotal()}`;
 }
 
 function getTotal() {
@@ -82,6 +92,4 @@ addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Pear", 0.89);
-showItems();
-removeItem("Apple");
 showItems();
