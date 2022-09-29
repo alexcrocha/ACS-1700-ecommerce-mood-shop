@@ -65,7 +65,23 @@ function getQuantity() {
   return quantity;
 }
 
+function removeItem(name, quantity = 0) {
+  for (let index = 0; index < cart.length; index++) {
+    if (cart[index].name === name) {
+      if (quantity > 0) {
+        cart[index].quantity -= 1;
+      }
+      if (cart[index].quantity < 1 || quantity === 0) {
+        cart.splice(index, 1);
+      }
+    }
+  }
+}
+
+addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Apple", 0.99);
 addItem("Pear", 0.89);
+showItems();
+removeItem("Apple");
 showItems();
