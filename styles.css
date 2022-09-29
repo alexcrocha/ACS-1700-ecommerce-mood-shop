@@ -25,3 +25,47 @@ body {
   padding: 0.5em;
   text-decoration: none;
 }
+
+main {
+  margin: 1em 0;
+}
+
+.items {
+  width: 80%;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1em;
+}
+
+.items img {
+  width: 100%;
+  height: auto;
+}
+
+.item {
+  border: 1px solid black;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color: #ece9dc;
+}
+
+.item img {
+  border-top-right-radius: 1em;
+  border-top-left-radius: 1em;
+}
+
+.item p {
+  font-size: .9em;
+  margin: 10px 10px 0 10px;
+}
+
+.item button {
+  align-self: center;
+  justify-self: flex-end;
+  padding: 5px 10px;
+  border-radius: 1em;
+  margin: auto 5px 5px 5px;
+}
