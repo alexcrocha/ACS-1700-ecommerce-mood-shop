@@ -1,6 +1,7 @@
 import data from "./data.js";
 
 const itemsContainer = document.querySelector("#items");
+
 const cartQuantity = document.getElementById("cart-quantity");
 const itemList = document.getElementById("item-list");
 const cartTotal = document.getElementById("cart-total");
@@ -33,6 +34,15 @@ for (let index = 0; index < data.length; index++) {
   button.innerHTML = "Add to Cart";
   newDiv.appendChild(button);
 }
+
+const all_items_button = Array.from(document.querySelectorAll("button"));
+
+all_items_button.forEach((button) =>
+  button.addEventListener("click", () => {
+    addItem(button.getAttribute("id"), button.getAttribute("data-price"));
+    showItems();
+  })
+);
 
 const cart = [];
 
@@ -88,8 +98,8 @@ function removeItem(name, quantity = 0) {
   }
 }
 
-addItem("Apple", 0.99);
-addItem("Apple", 0.99);
-addItem("Apple", 0.99);
-addItem("Pear", 0.89);
+// addItem("Apple", 0.99);
+// addItem("Apple", 0.99);
+// addItem("Apple", 0.99);
+// addItem("Pear", 0.89);
 showItems();
