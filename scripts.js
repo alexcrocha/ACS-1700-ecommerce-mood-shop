@@ -30,3 +30,13 @@ for (let index = 0; index < data.length; index++) {
   button.innerHTML = "Add to Cart";
   newDiv.appendChild(button);
 }
+
+const cart = [];
+
+function addItem(name, price, quantity = 1) {
+  const item = { name: name, price: price, quantity: quantity };
+  cart.push(name);
+}
+
+function showItems() {}
+
