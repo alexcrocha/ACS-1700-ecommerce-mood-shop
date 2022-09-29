@@ -3,14 +3,16 @@ body {
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
+
 }
 
 .page-header {
   display: flex;
   font-display: row;
   justify-content: space-between;
-  background-color: #eaa858;
+  background-color: #EFECCA;
   padding: 0 1em;
+  box-shadow: 1px 1px 5px;
 }
 
 .page-header ul {
@@ -47,9 +49,10 @@ main {
 .item {
   border: 1px solid black;
   border-radius: 1em;
+  box-shadow: 1px 1px 5px;
   display: flex;
   flex-direction: column;
-  background-color: #ece9dc;
+  background-color: #A9CBB7;
 }
 
 .item img {
@@ -68,4 +71,53 @@ main {
   padding: 5px 10px;
   border-radius: 1em;
   margin: auto 5px 5px 5px;
+  background-color: #EFECCA;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: #EFECCA;
+  box-shadow: 1px 1px 5px;
+}
+
+footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+footer li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+li p{
+  display: inline;
+  font-size: .9em;
+  margin: 10px;
+}
+
+li p:nth-child(1) {
+  margin: 10px auto 10px 10px;
+}
+
+#item-list button {
+  padding: 5px 10px;
+  border-radius: 1em;
+  height: 30px;
+  margin: 5px;
+  background-color: #A9CBB7;
+}
+
+input {
+  padding: 5px 10px;
+  border-radius: 1em;
+  margin: 5px;
 }

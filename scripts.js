@@ -6,6 +6,29 @@ const cartQuantity = document.getElementById("cart-quantity");
 const itemList = document.getElementById("item-list");
 const cartTotal = document.getElementById("cart-total");
 
+itemList.onchange = function (event) {
+  if (event.target && event.target.classList.contains("update")) {
+    const name = event.target.dataset.name;
+    const quantity = parseInt(event.target.value);
+    updateCart(name, quantity);
+  }
+};
+
+itemList.onclick = function (event) {
+  if (event.target && event.target.classList.contains("remove")) {
+    const name = event.target.dataset.name;
+    removeItem(name);
+  } else if (event.target && event.target.classList.contains("remove-one")) {
+    const name = event.target.dataset.name;
+    const quantity = 1;
+    removeItem(name, quantity);
+  } else if (event.target && event.target.classList.contains("add-one")) {
+    const name = event.target.dataset.name;
+    const price = event.target.dataset.price;
+    addItem(name, price);
+  }
+};
+
 for (let index = 0; index < data.length; index++) {
   const newDiv = document.createElement("div");
   newDiv.className = "item";
@@ -50,6 +73,7 @@ function addItem(name, price, quantity = 1) {
   for (let index = 0; index < cart.length; index++) {
     if (cart[index].name === name) {
       cart[index].quantity += quantity;
+      showItems();
       return;
     }
   }
@@ -63,7 +87,13 @@ function showItems() {
   for (let index = 0; index < cart.length; index++) {
     const { name, price, quantity } = cart[index];
     const total = cart[index].price * cart[index].quantity;
-    itemString += `<li>${name} $${price} x ${quantity} = ${total}</li>`;
+    const addOneButton = `<button class='add-one' data-name='${name}'> + </button>`;
+    const removeOneButton = `<button class='remove-one' data-name='${name}'> - </button>`;
+    const removeButton = `<button class='remove' data-name='${name}'>Remove</button>`;
+    const updateInput = `<input class='update' type='number' data-name=${name} data-price=${price}>`;
+    itemString += `<li><p>${name}</p> <p>$${price} x ${quantity} = ${total.toFixed(
+      2
+    )}</p> ${removeButton} ${addOneButton} ${removeOneButton} ${updateInput}</li>`;
   }
   itemList.innerHTML = itemString;
   cartTotal.innerHTML = `Total in cart: $${getTotal()}`;
@@ -74,7 +104,7 @@ function getTotal() {
   for (let index = 0; index < cart.length; index++) {
     total += cart[index].price * cart[index].quantity;
   }
-  return total;
+  return total.toFixed(2);
 }
 
 function getQuantity() {
@@ -94,6 +124,22 @@ function removeItem(name, quantity = 0) {
       if (cart[index].quantity < 1 || quantity === 0) {
         cart.splice(index, 1);
       }
+      showItems();
+      return;
+    }
+  }
+}
+
+function updateCart(name, quantity) {
+  for (let index = 0; index < cart.length; index++) {
+    if (cart[index].name === name) {
+      if (quantity < 1) {
+        removeItem(name);
+        return;
+      }
+      cart[index].quantity = quantity;
+      showItems();
+      return;
     }
   }
 }
