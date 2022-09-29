@@ -42,12 +42,16 @@ for (let index = 0; index < data.length; index++) {
   newDiv.appendChild(img);
   itemsContainer.appendChild(newDiv);
 
+  const name = document.createElement("h1");
+  name.innerText = data[index].name;
+  newDiv.appendChild(name);
+
   const description = document.createElement("p");
   description.innerText = data[index].desc;
   newDiv.appendChild(description);
 
   const price = document.createElement("p");
-  price.innerText = data[index].price;
+  price.innerText = `Price: $${data[index].price}`;
   newDiv.appendChild(price);
 
   const button = document.createElement("button");
@@ -91,7 +95,7 @@ function showItems() {
     const removeOneButton = `<button class='remove-one' data-name='${name}'> - </button>`;
     const removeButton = `<button class='remove' data-name='${name}'>Remove</button>`;
     const updateInput = `<input class='update' type='number' data-name=${name} data-price=${price}>`;
-    itemString += `<li><p>${name}</p> <p>$${price} x ${quantity} = ${total.toFixed(
+    itemString += `<li><p><strong>${name}</strong></p> <p>$${price} x ${quantity} = $${total.toFixed(
       2
     )}</p> ${removeButton} ${addOneButton} ${removeOneButton} ${updateInput}</li>`;
   }
@@ -144,8 +148,4 @@ function updateCart(name, quantity) {
   }
 }
 
-// addItem("Apple", 0.99);
-// addItem("Apple", 0.99);
-// addItem("Apple", 0.99);
-// addItem("Pear", 0.89);
 showItems();

@@ -1,16 +1,15 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
-
 }
 
 .page-header {
   display: flex;
   font-display: row;
   justify-content: space-between;
-  background-color: #EFECCA;
+  background-color: #efecca;
   padding: 0 1em;
   box-shadow: 1px 1px 5px;
 }
@@ -26,6 +25,7 @@ body {
   display: block;
   padding: 0.5em;
   text-decoration: none;
+  color: black;
 }
 
 main {
@@ -52,17 +52,29 @@ main {
   box-shadow: 1px 1px 5px;
   display: flex;
   flex-direction: column;
-  background-color: #A9CBB7;
+  background-color: #a9cbb7;
 }
 
 .item img {
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
+  border-bottom: 1px solid black;
+}
+
+h1 {
+  font-size: 1.4em;
+  text-align: center;
 }
 
 .item p {
-  font-size: .9em;
-  margin: 10px 10px 0 10px;
+  font-size: 0.9em;
+  margin: 5px 10px;
+}
+
+.item p:nth-child(4) {
+  font-weight: bold;
+  margin-top: auto;
+  align-self: flex-end;
 }
 
 .item button {
@@ -70,16 +82,16 @@ main {
   justify-self: flex-end;
   padding: 5px 10px;
   border-radius: 1em;
-  margin: auto 5px 5px 5px;
-  background-color: #EFECCA;
+  margin: 10px 5px;
+  background-color: #efecca;
 }
 
 footer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   padding: 1em;
-  background-color: #EFECCA;
+  background-color: #efecca;
   box-shadow: 1px 1px 5px;
 }
 
@@ -98,9 +110,9 @@ footer li {
   width: 100%;
 }
 
-li p{
+li p {
   display: inline;
-  font-size: .9em;
+  font-size: 0.9em;
   margin: 10px;
 }
 
@@ -113,11 +125,12 @@ li p:nth-child(1) {
   border-radius: 1em;
   height: 30px;
   margin: 5px;
-  background-color: #A9CBB7;
+  background-color: #a9cbb7;
 }
 
 input {
   padding: 5px 10px;
   border-radius: 1em;
   margin: 5px;
+  width: 50px;
 }
