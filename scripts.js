@@ -34,9 +34,38 @@ for (let index = 0; index < data.length; index++) {
 const cart = [];
 
 function addItem(name, price, quantity = 1) {
-  const item = { name: name, price: price, quantity: quantity };
-  cart.push(name);
+  for (let index = 0; index < cart.length; index++) {
+    if (cart[index].name === name) {
+      cart[index].quantity += quantity;
+      return;
+    }
+  }
+  const item = { name, price, quantity };
+  cart.push(item);
 }
 
-function showItems() {}
+function showItems() {
+  console.log(`You have ${getQuantity()} items in your cart`);
+  console.log(`Total in cart: $${getTotal()}`);
+}
 
+function getTotal() {
+  let total = 0;
+  for (let index = 0; index < cart.length; index++) {
+    total += cart[index].price * cart[index].quantity;
+  }
+  return total;
+}
+
+function getQuantity() {
+  let quantity = 0;
+  for (let index = 0; index < cart.length; index++) {
+    quantity += cart[index].quantity;
+  }
+  return quantity;
+}
+
+addItem("Apple", 0.99);
+addItem("Apple", 0.99);
+addItem("Pear", 0.89);
+showItems();
